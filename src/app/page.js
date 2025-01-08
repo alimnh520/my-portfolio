@@ -1,101 +1,140 @@
-import Image from "next/image";
+'use client';
+import { useEffect } from "react";
+import Home from "./components/homepage/Home";
+import NewHome from "./components/homepage/NewHome";
 
-export default function Home() {
+export default function page() {
+  useEffect(() => {
+    const canvas = document.getElementById("particleCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const numberOfParticles = 200;
+
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 100,
+    };
+
+    window.addEventListener("mousemove", (event) => {
+      mouse.x = event.x;
+      mouse.y = event.y;
+    });
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = "rgba(0, 255, 204, 0.3)";
+        ctx.fill();
+      }
+
+      update() {
+        if (this.x > canvas.width || this.x < 0) {
+          this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.directionY = -this.directionY;
+        }
+
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+          if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+            this.x += 2;
+          }
+          if (mouse.x > this.x && this.x > this.size * 10) {
+            this.x -= 2;
+          }
+          if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+            this.y += 2;
+          }
+          if (mouse.y > this.y && this.y > this.size * 10) {
+            this.y -= 2;
+          }
+        }
+
+        this.x += this.directionX;
+        this.y += this.directionY;
+
+        this.draw();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for (let i = 0; i < numberOfParticles; i++) {
+        const size = Math.random() * 5 + 1;
+        const x = Math.random() * (canvas.width - size * 2) + size * 2;
+        const y = Math.random() * (canvas.height - size * 2) + size * 2;
+        const directionX = Math.random() * 1 - 0.5;
+        const directionY = Math.random() * 1 - 0.5;
+        const color = "rgba(0, 255, 204, 0.3)";
+
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+      }
+    }
+
+    function connect() {
+      let opacityValue = 1;
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) {
+            opacityValue = 1 - distance / 100;
+            ctx.strokeStyle = `rgba(0, 255, 204, ${opacityValue})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+      connect();
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="w-full">
+      <Home/>
+      <NewHome/>
+      <canvas id="particleCanvas" className="bg-gray-900 w-full h-screen fixed top-0 left-0 block -z-50"></canvas>
     </div>
-  );
+  )
 }
