@@ -7,7 +7,6 @@ const Header = () => {
     const [divMove, setDivSize] = useState('');
     const [windowSize, setWindow] = useState(0);
     const [showNav, setShowNav] = useState(false);
-    console.log(showNav);
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -50,19 +49,19 @@ const Header = () => {
 
                     <div className={`absolute h-full w-[84px] bg-teal-500 opacity-75 rounded-tl-lg rounded-tr-lg before:absolute before:bottom-0 before:content-[''] before:h-5 before:w-5 before:-left-5 before:bg-transparent before:shadow-[2.5px_2.5px_2px_rgb(20,184,166)] before:rounded-br-lg after:absolute after:-right-5 after:content-[''] after:bottom-0 after:h-5 after:w-5 after:bg-transparent after:shadow-[-2.5px_2.5px_2px_rgb(20,184,166)] after:rounded-bl-lg left-[32px] transition-all duration-500 -z-10 sm:hidden`} style={move}></div>
 
-                    <li className={`h-full relative transition-all duration-300 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
+                    <li className={`h-full sm:relative sm:transition-all sm:duration-300 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Home</Link>
                     </li>
-                    <li className={`h-full relative transition-all duration-300 delay-100 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
+                    <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-100 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Blogs</Link>
                     </li>
-                    <li className={`h-full relative transition-all duration-300 delay-150 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
+                    <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-150 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Projects</Link>
                     </li>
-                    <li className={`h-full relative transition-all duration-300 delay-200 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
+                    <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-200 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Contact</Link>
                     </li>
-                    <li className={`h-full relative transition-all duration-300 delay-300 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
+                    <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-300 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>About me</Link>
                     </li>
                 </ul>
