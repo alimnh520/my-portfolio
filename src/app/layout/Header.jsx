@@ -35,8 +35,8 @@ const Header = () => {
 
     return (
         <div className={`w-full ${windowSize < 10 ? 'h-12 pt-2' : 'h-8 pt-1 sm:h-auto sm:pt-2'} sticky top-0 sm:relative backdrop-blur-md text-white flex items-center justify-center shadow-[4px_3px_3px_rgb(20,184,166)] transition-all duration-300 sm:h-auto z-30`}>
-            <nav className='w-full h-full flex items-center justify-between px-20 sm:flex-col sm:items-start sm:px-10 md:px-10'>
-                <h1 className='text-2xl sm:text-3xl font-bold'>
+            <nav className='w-full h-full flex items-center justify-between px-20 sm:flex-col sm:items-start sm:px-5 md:px-10'>
+                <h1 className='text-2xl sm:text-3xl font-bold sm:mt-1.5'>
                     <span className='text-red-500'>{'</'}</span>
                     Nahid
                     <span className='text-red-500'>{'>'}</span>

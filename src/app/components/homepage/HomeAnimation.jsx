@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const HomeAnimation = () => {
     return (
-        <div className='w-full h-screen flex items-center justify-between px-20 text-white sm:flex-col sm:px-5 sm:justify-center sm:space-y-10 sm:mt-5'>
+        <div className='w-full h-screen flex items-center justify-between px-20 text-white sm:flex-col sm:px-5 sm:justify-center sm:space-y-10 sm:mt-5 sm:h-auto'>
             <div className="h-full w-1/2 flex flex-col items-start justify-center space-y-5 sm:w-full sm:space-y-5">
                 <h1 className='text-lg font-semibold'>Hi There</h1>
                 <h1 className='text-5xl font-bold'>I'm <span className='text-4xl text-teal-500 drop-shadow-[0_0_3px_rgb(20,184,166)]'> Nahid</span></h1>

@@ -17,7 +17,7 @@ const ChildCom = ({ children }) => {
         canvas.height = window.innerHeight;
 
         let particlesArray = [];
-        const numberOfParticles = window.innerWidth < 768 ? 150 : 200;
+        const numberOfParticles = window.innerWidth < 768 ? 100 : 200;
 
         const mouse = {
             x: null,
