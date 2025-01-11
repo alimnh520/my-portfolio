@@ -1,8 +1,13 @@
 import React from 'react'
+import HomeAnimation from './HomeAnimation'
+import About from './About'
 
 const Home = () => {
     return (
-        <div className='w-full h-screen text-4xl flex items-center justify-center text-white'>This is Home Page</div>
+        <>
+            <HomeAnimation/>
+            <About/>
+        </>
     )
 }
 

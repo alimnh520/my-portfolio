@@ -34,9 +34,13 @@ const Header = () => {
     }
 
     return (
-        <div className={`w-full ${windowSize < 10 ? 'h-12 pt-2' : 'h-8 pt-1 sm:h-auto sm:pt-2'} sticky top-0 sm:relative backdrop-blur-md text-white flex items-center justify-center shadow-[4px_3px_3px_rgb(20,184,166)] transition-all duration-300 sm:h-auto`}>
+        <div className={`w-full ${windowSize < 10 ? 'h-12 pt-2' : 'h-8 pt-1 sm:h-auto sm:pt-2'} sticky top-0 sm:relative backdrop-blur-md text-white flex items-center justify-center shadow-[4px_3px_3px_rgb(20,184,166)] transition-all duration-300 sm:h-auto z-30`}>
             <nav className='w-full h-full flex items-center justify-between px-20 sm:flex-col sm:items-start sm:px-10 md:px-10'>
-                <h1 className='text-2xl sm:text-3xl font-bold'>logo</h1>
+                <h1 className='text-2xl sm:text-3xl font-bold'>
+                    <span className='text-red-500'>{'</'}</span>
+                    Nahid
+                    <span className='text-red-500'>{'>'}</span>
+                </h1>
 
                 <div className="w-24 h-10 border border-teal-500 rounded-md absolute hidden sm:flex items-center justify-between bg-[rgba(20,184,166,0.1)] backdrop-blur-md shadow-[0px_0px_3px_rgb(20,184,166)] right-5 top-3 px-2 font-semibold" onClick={() => setShowNav(!showNav)}>
                     <p>MENU</p>
