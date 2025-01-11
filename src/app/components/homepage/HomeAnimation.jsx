@@ -17,7 +17,7 @@ const HomeAnimation = () => {
                 </p>
                 <Link href="" className='px-10 py-4 bg-transparent backdrop-blur-md rounded-lg border border-teal-400 shadow-[0_0_0px_rgb(20,184,166),inset_0_0_10px_rgb(20,184,166)] text-lg font-semibold text-teal-500 transition-all duration-300 hover:shadow-[0_0_15px_rgb(20,184,166),inset_0_0_15px_rgb(20,184,166)] hover:text-teal-400'>Contact me</Link>
             </div>
-            <div className="h-full w-1/2 flex flex-col items-center justify-center bg-transparent p-20 sm:w-full sm:p-0">
+            <div className="h-full w-1/2 flex flex-col items-center justify-center bg-transparent p-20 sm:w-full sm:p-0 sm:h-[400px]">
                 <div className="h-full w-full bg-[url('/home/IMG_20241230_165456.jpg')] bg-cover bg-center backdrop-blur-sm border border-teal-500 rounded-[30%_70%_70%_30%_/_30%_66%_34%_70%] shadow-[0_0_20px_rgb(20,184,166),inset_0_0_20px_rgb(20,184,166)]">
 
                 </div>
