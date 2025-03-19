@@ -42,7 +42,7 @@ const TextAnimate = () => {
     }, [charIndex, isDeleting, loop, texts]);
 
     return (
-        <div className="text-4xl font-bold bg-transparent">
+        <div className="text-6xl font-bold bg-transparent">
             <span className="text-teal-500 drop-shadow-[0_0_3px_rgb(20,184,166)]">{currentText}</span>
             <span style={{
                 borderRight: "2px solid white",

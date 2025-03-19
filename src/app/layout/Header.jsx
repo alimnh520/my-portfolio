@@ -60,13 +60,13 @@ const Header = () => {
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Blogs</Link>
                     </li>
                     <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-150 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
-                        <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Projects</Link>
+                        <Link href="/components/project" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Projects</Link>
                     </li>
                     <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-200 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
                         <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>Contact</Link>
                     </li>
                     <li className={`h-full sm:relative sm:transition-all sm:duration-300 delay-300 ${showNav ? 'sm:-left-0':'sm:-left-40'}`}>
-                        <Link href="" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>About me</Link>
+                        <Link href="/components/about" className=' flex items-center justify-center px-5 w-fit h-full sm:px-0 sm:py-3' onClick={(e) => updateMove(e)}>About me</Link>
                     </li>
                 </ul>
             </nav>

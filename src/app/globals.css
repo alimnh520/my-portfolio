@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
+}
+
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
+}
+
+.show {
+  position: relative;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  0%{top: -100px; transform: translateY(-100px);}
+  100%{top: -0; opacity: 1;}
 }
